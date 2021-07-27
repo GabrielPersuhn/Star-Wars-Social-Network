@@ -18,7 +18,7 @@ public class RebelServices {
 
     public Rebel createRebel(Rebel rebelde) throws IOException {
         rebelde.setId(UUID.randomUUID().toString());
-        rebelde.setIsTraitorEnum(isTraitorEnum.REBEL);
+        rebelde.setIsTraitorEnum(IsTraitorEnum.REBEL);
         return rebeldeRepository.inserirArquivo(rebelde);
     }
 
@@ -48,12 +48,12 @@ public class RebelServices {
 
     public List<Rebel> filtrarRebeldes() throws IOException {
         List<Rebel> listRebel = listAll();
-        return listRebel.stream().filter(t -> (t.getIsTraitorEnum().equals(isTraitorEnum.REBEL))).collect(Collectors.toList());
+        return listRebel.stream().filter(t -> (t.getIsTraitorEnum().equals(IsTraitorEnum.REBEL))).collect(Collectors.toList());
     }
 
     public List<Rebel> filtrarTraidores() throws IOException {
         List<Rebel> listTraitor = listAll();
-        return listTraitor.stream().filter(t -> (t.getIsTraitorEnum().equals(isTraitorEnum.REBEL))).collect(Collectors.toList());
+        return listTraitor.stream().filter(t -> (t.getIsTraitorEnum().equals(IsTraitorEnum.REBEL))).collect(Collectors.toList());
     }
 
 }

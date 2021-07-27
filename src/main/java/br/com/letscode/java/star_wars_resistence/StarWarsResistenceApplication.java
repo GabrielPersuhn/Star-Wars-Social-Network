@@ -21,4 +21,13 @@ public class StarWarsResistenceApplication {
 
     //TODO negociar itens e pontos dos itens (como atribuir)
 
+    //TODO interface ensinando a jogar
+
+    //inserir dois id's para negociar e informar o que eles irão negociar, se o valor for igual entre os dois, os itens serão
+    //adicionados de um rebelde para o outro
+
+    //id, itens
+
+    //diferença entre patch e post
+
 }

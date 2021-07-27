@@ -18,12 +18,13 @@ public class NegociacaoController {
     private final RebelServices rebeldeService;
 
     @GetMapping()
-    public List<Rebel> listAll() throws IOException {
-        return rebeldeService.listAll();
+    public String init() {
+        return "Explicação" ; // TODO comentários explicando sobre a negociação
     }
 
-    @PostMapping("{id}")
-    public String addNegociacao(@PathVariable String id, @RequestBody List<Recursos> inventario) throws IOException {
-        return negociacaoService.checkTrade(id, inventario);
+    @PostMapping()
+    public String newNegociacao(@RequestBody Negociacao negociacao ) throws IOException {
+        return negociacaoService.negociar(negociacao);
     }
+
 }

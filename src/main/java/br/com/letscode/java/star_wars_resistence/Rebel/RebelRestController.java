@@ -18,6 +18,7 @@ public class RebelRestController {
 
     @GetMapping
     public List<Rebel> listarTodos() throws IOException {
+        System.out.println("Explicações da aplicação"); //TODO comentarios sobe a aplicação em geral
         return rebeldeService.listAll();
     }
 
@@ -30,4 +31,5 @@ public class RebelRestController {
     public Optional<Rebel> atualizarLocalizacao(@PathVariable String id, @RequestBody Localizacao localizacao) throws IOException {
         return rebeldeService.updateLocalization(id, localizacao);
     }
+
 }

@@ -10,15 +10,24 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class Recursos {
 
-    @NotNull
-    private Item item;
+    @NotEmpty
+    private int arma;
 
     @NotEmpty
-    private int qtde;
+    private int municao;
+
+    @NotEmpty
+    private int agua;
+
+    @NotEmpty
+    private int comida;
 
     @Override
     public String toString() {
-        return item + "," + qtde;
+        return "Armas: " + arma + "," +
+                "Municao: " + municao + "," +
+                "Aguas: " + agua + "," +
+                "Comidas: " + comida;
     }
 
 //    public int getScoreArma(){

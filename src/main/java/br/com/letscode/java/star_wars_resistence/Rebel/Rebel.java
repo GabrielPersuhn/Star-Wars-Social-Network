@@ -21,14 +21,14 @@ public class Rebel {
     @NotNull(message = "O atributo Nome é obrigatória")
     private String nome;
     @NotNull(message = "O atributo Gênero é obrigatório")
-    private generoEnum generoEnum;
+    private GeneroEnum generoEnum;
     @NotNull(message = "O atributo Idade é obrigatório")
     private Integer idade;
     @NotNull(message = "O atributo Localização é obrigatório")
     private Localizacao localizacao;
 
     @JsonIgnore
-    private isTraitorEnum isTraitorEnum;
+    private IsTraitorEnum isTraitorEnum;
     @JsonIgnore
     private Integer reports = 0;
 

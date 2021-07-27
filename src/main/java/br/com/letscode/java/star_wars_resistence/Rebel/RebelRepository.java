@@ -1,6 +1,5 @@
 package br.com.letscode.java.star_wars_resistence.Rebel;
 
-import br.com.letscode.java.star_wars_resistence.Inventario.Item;
 import br.com.letscode.java.star_wars_resistence.Inventario.Recursos;
 import br.com.letscode.java.star_wars_resistence.Localizacao.Localizacao;
 import org.springframework.stereotype.Repository;
@@ -8,13 +7,11 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -45,15 +42,15 @@ public class RebelRepository {
         return rebelde;
     }
 
-    private Rebel converterLinha(String linha) {
+    private Rebel converterLinhaParaRebel(String linha) {
         StringTokenizer token = new StringTokenizer(linha, ",");
         var rebelde = Rebel.builder()
                 .id(token.nextToken())
                 .nome(token.nextToken())
-                .generoEnum(generoEnum.valueOf(token.nextToken()))
+                .generoEnum(GeneroEnum.valueOf(token.nextToken()))
                 .idade(Integer.valueOf(token.nextToken()))
                 .reports(Integer.valueOf(token.nextToken()))
-                .isTraitorEnum(isTraitorEnum.valueOf(token.nextToken()))
+                .isTraitorEnum(IsTraitorEnum.valueOf(token.nextToken()))
                 .localizacao(Localizacao.builder()
                         .latitude(Long.valueOf(token.nextToken()))
                         .longitude(Long.valueOf(token.nextToken()))
@@ -96,7 +93,7 @@ public class RebelRepository {
         try (BufferedReader br = Files.newBufferedReader(pathRebeldes)) {
             rebeldes = br.lines().filter(Objects::nonNull)
                     .filter(Predicate.not(String::isEmpty))
-                    .map(this::converterLinha)
+                    .map(this::converterLinhaParaRebel)
                     .collect(Collectors.toList());
         }
         return rebeldes;
