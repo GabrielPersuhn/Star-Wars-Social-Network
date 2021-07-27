@@ -60,8 +60,10 @@ public class RebelRepository {
         List<Recursos> recursosList = new ArrayList<>();
         while (token.hasMoreTokens()) {
             var recursos = Recursos.builder()
-                    .item(Item.valueOf(token.nextToken().trim()))
-                    .qtde(Integer.parseInt(token.nextToken().trim()))
+                    .arma(Integer.parseInt(token.nextToken()))
+                    .municao(Integer.parseInt(token.nextToken()))
+                    .agua(Integer.parseInt(token.nextToken()))
+                    .comida(Integer.parseInt(token.nextToken()))
                     .build();
             recursosList.add(recursos);
         }

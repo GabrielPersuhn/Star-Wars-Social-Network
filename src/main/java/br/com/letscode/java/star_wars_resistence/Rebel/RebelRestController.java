@@ -22,6 +22,12 @@ public class RebelRestController {
         return rebeldeService.listAll();
     }
 
+//    @GetMapping(@PathVariable "/rebelde/instrucoes") {
+//        public String instrucoes() {
+//            return System.out.println("");
+//        }
+//    }
+
     @PostMapping
     public Rebel adicionarRebelde(@Valid @RequestBody Rebel rebelde) throws IOException {
         return rebeldeService.createRebel(rebelde);
