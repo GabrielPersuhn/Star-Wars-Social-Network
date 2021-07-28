@@ -3,7 +3,6 @@ package br.com.letscode.java.star_wars_resistence.Reporte;
 import br.com.letscode.java.star_wars_resistence.Rebel.IsTraitorEnum;
 import br.com.letscode.java.star_wars_resistence.Rebel.Rebel;
 import br.com.letscode.java.star_wars_resistence.Rebel.RebelRepository;
-import br.com.letscode.java.star_wars_resistence.Rebel.RebelServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +14,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ReporteService {
 
-    private final RebelServices rebeldeService;
     private final RebelRepository rebelRepository;
 
     public String reportarRebelde(String id) throws IOException {
         List<Rebel> listaRebeldes = rebelRepository.listAll();
         Optional<Rebel> rebeldesList = listaRebeldes
                 .stream()
-                .filter(rebeldeSearch -> rebeldeSearch.getId().equals(reporte.getRebeldeReportado().getId()))
+                .filter(rebeldeSearch -> rebeldeSearch.getId().equals(id))
                 .findFirst();
 
         if (rebeldesList.isEmpty()){
@@ -38,7 +36,7 @@ public class ReporteService {
                 rebeldesList.get().setIsTraitorEnum(IsTraitorEnum.TRAITOR);
             }
         }
-        rebelRepository.inserirArquivo(rebeldesList.get());
+        rebelRepository.reescreverArquivo(listaRebeldes);
         return "Rebelde reportado com sucesso !";
     }
 

@@ -13,7 +13,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class NegociacaoService {
 
-    private final RebelServices rebeldeService;
+    private final RebelRepository rebelRepository;
 
     public String negociacaoDeItens(Negociacao negociacao) throws IOException {
 
@@ -50,17 +50,31 @@ public class NegociacaoService {
         throw new IdInexistenteException();
     }
 
-    private void transferenciaRecursos(Optional<Rebel> rebelde1, Recursos listaDoRebelde1, Optional<Rebel> rebelde2, Recursos listaDoRebelde2){
-        rebelde1.get().getRecursos().setAgua(Math.toIntExact(rebelde1.get().getRecursos().getAgua() + listaDoRebelde2.getAgua() - listaDoRebelde1.getAgua()));
-        rebelde1.get().getRecursos().setMunicao(Math.toIntExact(rebelde1.get().getRecursos().getMunicao() + listaDoRebelde2.getMunicao() - listaDoRebelde1.getMunicao()));
-        rebelde1.get().getRecursos().setComida(Math.toIntExact(rebelde1.get().getRecursos().getComida() + listaDoRebelde2.getComida() - listaDoRebelde1.getComida()));
-        rebelde1.get().getRecursos().setArma(Math.toIntExact(rebelde1.get().getRecursos().getArma() + listaDoRebelde2.getArma() - listaDoRebelde1.getArma()));
+    private void transferenciaRecursos(Optional<Rebel> rebeldeUm, Recursos listaDoRebeldeUm, Optional<Rebel> rebeldeDois, Recursos listaDoRebeldeDois){
+        recursosRebeldeUm(rebeldeUm, listaDoRebeldeUm, listaDoRebeldeDois);
+        recursosRebeldeDois(listaDoRebeldeUm, rebeldeDois, listaDoRebeldeDois);
+    }
 
-        rebelde2.get().getRecursos().setAgua(Math.toIntExact(rebelde2.get().getRecursos().getAgua() + listaDoRebelde1.getAgua() - listaDoRebelde2.getAgua()));
-        rebelde2.get().getRecursos().setArma(Math.toIntExact(rebelde2.get().getRecursos().getArma() + listaDoRebelde1.getArma() - listaDoRebelde2.getArma()));
-        rebelde2.get().getRecursos().setMunicao(Math.toIntExact(rebelde2.get().getRecursos().getMunicao() + listaDoRebelde1.getMunicao() - listaDoRebelde2.getMunicao()));
-        rebelde2.get().getRecursos().setComida(Math.toIntExact(rebelde2.get().getRecursos().getComida() + listaDoRebelde1.getComida() - listaDoRebelde2.getComida()));
+    private void recursosRebeldeDois(Recursos listaDoRebeldeUm, Optional<Rebel> rebeldeDois, Recursos listaDoRebeldeDois) {
+        rebeldeDois.get().getRecursos().setAgua(Math.toIntExact(rebeldeDois.get().getRecursos().getAgua()
+                + listaDoRebeldeUm.getAgua() - listaDoRebeldeDois.getAgua()));
+        rebeldeDois.get().getRecursos().setArma(Math.toIntExact(rebeldeDois.get().getRecursos().getArma()
+                + listaDoRebeldeUm.getArma() - listaDoRebeldeDois.getArma()));
+        rebeldeDois.get().getRecursos().setMunicao(Math.toIntExact(rebeldeDois.get().getRecursos().getMunicao()
+                + listaDoRebeldeUm.getMunicao() - listaDoRebeldeDois.getMunicao()));
+        rebeldeDois.get().getRecursos().setComida(Math.toIntExact(rebeldeDois.get().getRecursos().getComida()
+                + listaDoRebeldeUm.getComida() - listaDoRebeldeDois.getComida()));
+    }
 
+    private void recursosRebeldeUm(Optional<Rebel> rebeldeUm, Recursos listaDoRebeldeUm, Recursos listaDoRebeldeDois) {
+        rebeldeUm.get().getRecursos().setAgua(Math.toIntExact(rebeldeUm.get().getRecursos().getAgua()
+                - listaDoRebeldeUm.getAgua() + listaDoRebeldeDois.getAgua()));
+        rebeldeUm.get().getRecursos().setArma(Math.toIntExact(rebeldeUm.get().getRecursos().getArma()
+                - listaDoRebeldeUm.getArma() + listaDoRebeldeDois.getArma()));
+        rebeldeUm.get().getRecursos().setMunicao(Math.toIntExact(rebeldeUm.get().getRecursos().getMunicao()
+                - listaDoRebeldeUm.getMunicao() + listaDoRebeldeDois.getMunicao()));
+        rebeldeUm.get().getRecursos().setComida(Math.toIntExact(rebeldeUm.get().getRecursos().getComida()
+                - listaDoRebeldeUm.getComida() + listaDoRebeldeDois.getComida()));
     }
 
 }

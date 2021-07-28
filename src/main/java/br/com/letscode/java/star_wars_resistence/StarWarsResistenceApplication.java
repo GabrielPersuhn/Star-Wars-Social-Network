@@ -11,7 +11,6 @@ public class StarWarsResistenceApplication {
     }
 
 
-    //TODO reportar o rebelde como um traidor
 
     //TODO Transformar metodos para somente 1 parametro
     //TODO testes

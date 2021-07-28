@@ -21,13 +21,13 @@ import java.util.stream.Collectors;
 
 @Repository
 public class RebelRepository {
-    private final String caminho = "src/main/resources/dados/rebelde.csv";
 
     private Path pathRebeldes;
 
     @PostConstruct
     public void init() {
         try {
+            String caminho = "src/main/resources/dados/rebelde.csv";
             pathRebeldes = Paths.get(caminho);
             if (!pathRebeldes.toFile().exists()) {
                 Files.createFile(pathRebeldes);

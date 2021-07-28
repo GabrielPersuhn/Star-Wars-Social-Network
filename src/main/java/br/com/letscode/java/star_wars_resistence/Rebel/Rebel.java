@@ -37,6 +37,7 @@ public class Rebel {
 
     @JsonIgnore
     private IsTraitorEnum isTraitorEnum;
+
     @JsonIgnore
     private Integer reports = 0;
 
