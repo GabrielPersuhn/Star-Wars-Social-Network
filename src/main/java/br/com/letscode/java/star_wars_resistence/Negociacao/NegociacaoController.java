@@ -24,7 +24,7 @@ public class NegociacaoController {
 
     @PostMapping()
     public String newNegociacao(@RequestBody Negociacao negociacao ) throws IOException {
-        return negociacaoService.negociar(negociacao);
+        return negociacaoService.negociacaoDeItens(negociacao);
     }
 
 }

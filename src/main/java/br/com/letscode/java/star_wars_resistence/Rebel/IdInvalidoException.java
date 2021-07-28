@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class IdInvalidoException extends RuntimeException {
-
     public IdInvalidoException(String id) {
         super("O id " + id + " informado não consta no nosso banco de dados");
     }

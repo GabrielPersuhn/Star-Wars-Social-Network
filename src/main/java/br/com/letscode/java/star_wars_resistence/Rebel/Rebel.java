@@ -18,23 +18,25 @@ import java.util.List;
 public class Rebel {
 
     private String id;
+
     @NotNull(message = "O atributo Nome é obrigatória")
     private String nome;
+
     @NotNull(message = "O atributo Gênero é obrigatório")
     private GeneroEnum generoEnum;
+
     @NotNull(message = "O atributo Idade é obrigatório")
     private Integer idade;
+
     @NotNull(message = "O atributo Localização é obrigatório")
     private Localizacao localizacao;
+
+    @NotNull(message = "O atributo Recursos é obrigatório")
+    private Recursos recursos;
 
     @JsonIgnore
     private IsTraitorEnum isTraitorEnum;
     @JsonIgnore
     private Integer reports = 0;
-
-    @NotNull(message = "O atributo Recursos é obrigatório")
-    private List<Recursos> recursos;
-
-
 
 }

@@ -67,7 +67,7 @@ public class RebelRepository {
                     .build();
             recursosList.add(recursos);
         }
-        rebelde.setRecursos(recursosList);
+        rebelde.setRecursos(recursosList); // TODO --- arrumar setRecursos
         return rebelde;
     }
 
