@@ -3,17 +3,19 @@ package br.com.letscode.java.star_wars_resistence.Reporte;
 import br.com.letscode.java.star_wars_resistence.Rebel.IsTraitorEnum;
 import br.com.letscode.java.star_wars_resistence.Rebel.Rebel;
 import br.com.letscode.java.star_wars_resistence.Rebel.RebelRepository;
+import br.com.letscode.java.star_wars_resistence.Rebel.RebelServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class ReporteService {
 
-    private final RebelRepository rebeldeRepository;
+    private final RebelServices rebeldeService;
+    private final RebelRepository rebelRepository;
 
     public String reportarRebelde(Reporte reporte) throws IOException {
         List<Rebel> rebeldesList = rebeldeRepository.listAll();
