@@ -56,18 +56,24 @@ public class RebelRepository {
                         .longitude(Long.valueOf(token.nextToken()))
                         .BaseNaGalaxia(token.nextToken())
                         .build())
+                .recursos((Recursos.builder())
+                        .arma(Integer.parseInt(token.nextToken()))
+                        .municao(Integer.parseInt(token.nextToken()))
+                        .agua(Integer.parseInt(token.nextToken()))
+                        .comida(Integer.parseInt(token.nextToken()))
+                        .build())
                 .build();
-        List<Recursos> recursosList = new ArrayList<>();
-        while (token.hasMoreTokens()) {
-            var recursos = Recursos.builder()
-                    .arma(Integer.parseInt(token.nextToken()))
-                    .municao(Integer.parseInt(token.nextToken()))
-                    .agua(Integer.parseInt(token.nextToken()))
-                    .comida(Integer.parseInt(token.nextToken()))
-                    .build();
-            recursosList.add(recursos);
-        }
-        rebelde.setRecursos(recursosList); // TODO --- arrumar setRecursos
+//        List<Recursos> recursosList = new ArrayList<>();
+//        while (token.hasMoreTokens()) {
+//            var recursos = Recursos.builder()
+//                    .arma(Integer.parseInt(token.nextToken()))
+//                    .municao(Integer.parseInt(token.nextToken()))
+//                    .agua(Integer.parseInt(token.nextToken()))
+//                    .comida(Integer.parseInt(token.nextToken()))
+//                    .build();
+//            recursosList.add(recursos);
+//        }
+//        rebelde.setRecursos(recursosList);
         return rebelde;
     }
 

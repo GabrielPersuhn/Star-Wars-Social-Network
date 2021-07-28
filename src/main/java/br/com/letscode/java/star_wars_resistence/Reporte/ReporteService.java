@@ -18,21 +18,26 @@ public class ReporteService {
     private final RebelRepository rebelRepository;
 
     public String reportarRebelde(Reporte reporte) throws IOException {
-        List<Rebel> rebeldesList = rebeldeRepository.listAll();
-        //if (checarSeJaFoiReportado(reporte)){
-       //    throw new RebeldeReportadoAnteriormenteException(reportar.getIdTraidor());
-        //}
-        for (Rebel rebelde : rebeldesList) {
-            if (reporte.getIdTraidor().equals(rebelde.getId())) {
-                rebelde.setReports(rebelde.getReports() + 1);
-                if (rebelde.getReports() == 3) {
-                    rebelde.setIsTraitorEnum(IsTraitorEnum.TRAITOR);
-                }
+        Optional<Rebel> rebeldesList = rebeldeService.listAll()
+                .stream()
+                .filter(rebeldeSearch -> rebeldeSearch.getId().equals(reporte.getRebeldeReportado().getId()))
+                .findFirst();
+
+        if (rebeldesList.isEmpty()){
+            throw new RebeldeInexistenteException();
+
+        } else if (rebeldesList.get().getIsTraitorEnum().equals(IsTraitorEnum.TRAITOR)){
+            throw new RebeldeJaTraidorException();
+
+        } else {
+            rebeldesList.get().setReports(rebeldesList.get().getReports() + 1);
+
+            if (rebeldesList.get().getReports() == 3) {
+                rebeldesList.get().setIsTraitorEnum(IsTraitorEnum.TRAITOR);
             }
         }
-        //rebeldeRepository.reescreverArquivo(rebeldesList);
-        //inserirArquivo(reportar);
-        return "rebelde reportado.";
+        rebelRepository.inserirArquivo(rebeldesList.get());
+        return "Rebelde reportado com sucesso !";
     }
 
 }
