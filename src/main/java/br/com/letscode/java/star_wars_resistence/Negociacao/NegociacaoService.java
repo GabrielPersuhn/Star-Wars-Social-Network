@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,25 +17,34 @@ public class NegociacaoService {
 
     public String negociacaoDeItens(Negociacao negociacao) throws IOException {
 
-        Recursos itensDeTrocaRebelde1 = negociacao.getFirstRecursos();
-        Recursos itensDeTrocaRebelde2 = negociacao.getSecondRecursos();
+        Recursos itensDeTrocaRebeldeUm = negociacao.getFirstRecursos();
+        Recursos itensDeTrocaRebeldeDois = negociacao.getSecondRecursos();
 
-        Optional<Rebel> rebelde1 = rebeldeService.listAll().stream()
+        Optional<Rebel> rebeldeUm = rebelRepository.listAll().stream()
                 .filter(r -> r.getId().equals(negociacao.getFirstId()))
                 .findFirst();
-        Optional<Rebel> rebelde2 = rebeldeService.listAll().stream()
+
+        Optional<Rebel> rebeldeDois = rebelRepository.listAll().stream()
                 .filter(r -> r.getId().equals(negociacao.getSecondId()))
                 .findFirst();
 
-        if (rebelde1.isPresent() && rebelde2.isPresent()) {
-            if (rebelde1.get().getIsTraitorEnum().equals(IsTraitorEnum.TRAITOR) ||
-                    rebelde2.get().getIsTraitorEnum().equals(IsTraitorEnum.TRAITOR)) {
+        if (rebeldeUm.isPresent() && rebeldeDois.isPresent()) {
+            if (rebeldeUm.get().getIsTraitorEnum().equals(IsTraitorEnum.TRAITOR) ||
+                    rebeldeDois.get().getIsTraitorEnum().equals(IsTraitorEnum.TRAITOR)) {
                 throw new NegociacaoComTraitorException();
             }
-            if (negociacao.equalsScore()) {
+
+            if (!negociacao.equalsScore()) {
                 throw new ScoresDiferemException();
             }
-            transferenciaRecursos(rebelde1, itensDeTrocaRebelde1, rebelde2, itensDeTrocaRebelde2);
+            transferenciaRecursos(rebeldeUm, itensDeTrocaRebeldeUm, rebeldeDois, itensDeTrocaRebeldeDois);
+
+            List<Rebel> itensTrocaUm = rebelRepository.listAll();
+            List<Rebel> itensTrocaDois = rebelRepository.listAll();
+
+            rebelRepository.reescreverArquivo(itensTrocaUm);
+            rebelRepository.reescreverArquivo(itensTrocaDois);
+
             return "Negociação dos itens realizada com sucesso !";
         }
         throw new IdInexistenteException();

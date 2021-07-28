@@ -1,6 +1,7 @@
 package br.com.letscode.java.star_wars_resistence.Negociacao;
 
 import br.com.letscode.java.star_wars_resistence.Inventario.Recursos;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -20,6 +21,7 @@ public class Negociacao {
     @NotEmpty
     private Recursos secondRecursos;
 
+    @JsonIgnore
     public int getScoreFirst() {
         int agua = this.firstRecursos.getAgua();
         int arma = this.firstRecursos.getArma();
@@ -28,6 +30,7 @@ public class Negociacao {
         return ((agua * 2) + (arma * 4) + (municao * 3) + comida);
     }
 
+    @JsonIgnore
     public int getScoreSecond() {
         int agua = this.secondRecursos.getAgua();
         int arma = this.secondRecursos.getArma();

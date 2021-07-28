@@ -44,17 +44,17 @@ public class RebelRepository {
 
     private Rebel converterLinhaParaRebel(String linha) {
         StringTokenizer token = new StringTokenizer(linha, ",");
-        var rebelde = Rebel.builder()
+        return Rebel.builder()
                 .id(token.nextToken())
                 .nome(token.nextToken())
                 .generoEnum(GeneroEnum.valueOf(token.nextToken()))
-                .idade(Integer.valueOf(token.nextToken()))
-                .reports(Integer.valueOf(token.nextToken()))
+                .idade(Integer.parseInt(token.nextToken()))
+                .reports(Integer.parseInt(token.nextToken()))
                 .isTraitorEnum(IsTraitorEnum.valueOf(token.nextToken()))
                 .localizacao(Localizacao.builder()
+                        .BaseNaGalaxia(token.nextToken())
                         .latitude(Long.valueOf(token.nextToken()))
                         .longitude(Long.valueOf(token.nextToken()))
-                        .BaseNaGalaxia(token.nextToken())
                         .build())
                 .recursos((Recursos.builder())
                         .arma(Integer.parseInt(token.nextToken()))
@@ -63,26 +63,14 @@ public class RebelRepository {
                         .comida(Integer.parseInt(token.nextToken()))
                         .build())
                 .build();
-//        List<Recursos> recursosList = new ArrayList<>();
-//        while (token.hasMoreTokens()) {
-//            var recursos = Recursos.builder()
-//                    .arma(Integer.parseInt(token.nextToken()))
-//                    .municao(Integer.parseInt(token.nextToken()))
-//                    .agua(Integer.parseInt(token.nextToken()))
-//                    .comida(Integer.parseInt(token.nextToken()))
-//                    .build();
-//            recursosList.add(recursos);
-//        }
-//        rebelde.setRecursos(recursosList);
-        return rebelde;
     }
 
     private String format(Rebel rebelde) {
-        return String.format("%s,%s,%d,%s,%d,%s,%s,%s\r\n",
+        return String.format("%s,%s,%s,%d,%d,%s,%s,%s\r\n",
                 rebelde.getId(),
                 rebelde.getNome(),
-                rebelde.getIdade(),
                 rebelde.getGeneroEnum(),
+                rebelde.getIdade(),
                 rebelde.getReports(),
                 rebelde.getIsTraitorEnum(),
                 rebelde.getLocalizacao(),

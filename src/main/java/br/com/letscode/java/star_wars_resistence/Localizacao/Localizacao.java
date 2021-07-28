@@ -18,4 +18,11 @@ public class Localizacao {
     @NotNull
     private String BaseNaGalaxia;
 
+    @Override
+    public String toString() {
+        return BaseNaGalaxia +
+                "," + latitude +
+                "," + longitude;
+    }
+
 }

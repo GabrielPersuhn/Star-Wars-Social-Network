@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,8 +18,9 @@ public class ReporteService {
     private final RebelServices rebeldeService;
     private final RebelRepository rebelRepository;
 
-    public String reportarRebelde(Reporte reporte) throws IOException {
-        Optional<Rebel> rebeldesList = rebeldeService.listAll()
+    public String reportarRebelde(String id) throws IOException {
+        List<Rebel> listaRebeldes = rebelRepository.listAll();
+        Optional<Rebel> rebeldesList = listaRebeldes
                 .stream()
                 .filter(rebeldeSearch -> rebeldeSearch.getId().equals(reporte.getRebeldeReportado().getId()))
                 .findFirst();

@@ -16,8 +16,8 @@ public class ReporteRestController {
     private final ReporteService rebelService;
 
     @PostMapping
-    public String reportarRebelde(@RequestParam Reporte idReportado) throws IOException {
-        return rebelService.reportarRebelde(idReportado);
+    public String reportarRebelde(@RequestParam String id) throws IOException {
+        return rebelService.reportarRebelde(id);
     }
 
 }

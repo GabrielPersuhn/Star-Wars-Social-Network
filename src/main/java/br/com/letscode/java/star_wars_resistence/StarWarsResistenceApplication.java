@@ -14,10 +14,12 @@ public class StarWarsResistenceApplication {
     //TODO reportar o rebelde como um traidor
 
     //TODO Transformar metodos para somente 1 parametro
-
     //TODO testes
     //TODO implementação de ID (verificar como a pessoa ira ver o ID e se é necessario)
     //TODO catching
+    //TODO id ta aparecendo pra pessoa inserir um rebelde, e não deveria aparecer
+
+    //TODO relatórios
 
     //TODO negociar itens e pontos dos itens (como atribuir)
 
@@ -26,8 +28,11 @@ public class StarWarsResistenceApplication {
     //inserir dois id's para negociar e informar o que eles irão negociar, se o valor for igual entre os dois, os itens serão
     //adicionados de um rebelde para o outro
 
-    //id, itens
 
-    //diferença entre patch e post
+    //FUNCIONANDO
+    //GET REBELDE (LISTAR TODOS)
+    //POST REBELDE (INSERIR REBELDE)
+    //PATCH REBELDE (ATUALIZAR LOCALIZAÇÃO)
+    //POST REPORTE (REPORTAR REBELDE)
 
 }
