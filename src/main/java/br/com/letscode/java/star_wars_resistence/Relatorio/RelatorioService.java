@@ -12,48 +12,69 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class RelatorioService {
 
-//    private final RebelServices rebeldeService;
-//
-//    public String getTraidores() throws IOException {
-//        var qtdeRebeldes = rebeldeService.listAll().
-//        var qtdeTraidores = (double) rebeldeService.listAll().stream()
-//                .filter(Rebel::getIsTraitorEnum).collect(Collectors.toList()).size();
-//        var traidoresPercent = (qtdeTraidores*100)/(qtdeRebeldes);
-//        return String.format("Porcentagem de traidores: %.2f%%", traidoresPercent);
-//    }
-//
-//    public String getRebeldes() throws IOException {
-//        var rebeldePercent = 100 - getTraidores;
-//        return String.format("Porcentagem de rebeldes: %.2f%%", rebeldePercent);
-//    }
-//
-//    public String pontosReport() throws IOException {
-//        List<Rebelde> listaTraidores = rebeldeService.listAll().stream()
-//                .filter(Rebelde::isTraitor).collect(Collectors.toList());
-//        int pontosPerdidos = 0;
-//        for (Rebelde rebelde : listaTraidores) {
-//            pontosPerdidos += rebeldeService.valorInventario(rebelde.getInventario());
-//        }
-//        return "Foram perdidos "+pontosPerdidos+" pontos devido a traidores";
-//    }
-//
-//    public String recursosReport() throws IOException {
-//        List<Rebelde> listaRebeldes = rebeldeService.listAll().stream()
-//                .filter(Rebelde -> !Rebelde.isTraitor()).collect(Collectors.toList());
-//        float mediaArma = 0, mediaMunicao = 0, mediaAgua = 0, mediaComida = 0;
-//        for (Rebelde rebelde : listaRebeldes) {
-//            mediaArma += rebelde.getInventario().getArma();
-//            mediaMunicao += rebelde.getInventario().getMunicao();
-//            mediaAgua += rebelde.getInventario().getAgua();
-//            mediaComida += rebelde.getInventario().getComida();
-//        }
-//        var listSize = listaRebeldes.size();
-//        mediaArma /= listSize;
-//        mediaMunicao /= listSize;
-//        mediaAgua /= listSize;
-//        mediaComida /= listSize;
-//        return String.format("Relatório de items:\n%.2f armas por rebelde,\n" +
-//                        "%.2f munições por rebelde,\n%.2f aguas por rebelde,\n%.2f comidas por rebelde."
-//                ,mediaArma,mediaMunicao,mediaAgua,mediaComida);
-//    }
+    private final RebelServices rebeldeService;
+
+    public String getTraidores() throws IOException {
+        var qtdeTraidores = rebeldeService.filtrarTraidores().size();
+        long traidoresPercent = (qtdeTraidores* 100L)/(rebeldeService.listAll().size());
+        return String.format("Porcentagem de traidores: %.2f%%", traidoresPercent);
+    }
+
+    public String getRebeldes() throws IOException {
+        var qtdeRebelde = rebeldeService.filtrarRebeldes().size();
+        long rebeldePercent = (qtdeRebelde* 100L)/(rebeldeService.listAll().size());
+        return String.format("Porcentagem de rebeldes: %.2f%%", rebeldePercent);
+    }
+
+    public String mediaRecursos() throws IOException {
+        var rebelList = rebeldeService.filtrarRebeldes();
+
+        int qtdeArma = 0;
+        int qtdeMunicao = 0;
+        int qtdeComida = 0;
+        int qtdeAgua = 0;
+
+        for (Rebel rebel : rebelList) {
+            qtdeAgua += rebel.getRecursos().getAgua();
+            qtdeArma += rebel.getRecursos().getArma();
+            qtdeComida += rebel.getRecursos().getComida();
+            qtdeMunicao += rebel.getRecursos().getMunicao();
+        }
+
+        long mediaArma = qtdeArma / rebeldeService.listAll().size();
+        long mediaMunicao = qtdeMunicao / rebeldeService.listAll().size();
+        long mediaComida = qtdeComida / rebeldeService.listAll().size();
+        long mediaAgua = qtdeAgua / rebeldeService.listAll().size();
+
+
+        return String.format("Media de Arma: " + mediaArma +
+                "Media de Munição: " + mediaMunicao +
+                "Media de Comida: " + mediaComida +
+                "Media de Água: " + mediaAgua);
+    }
+
+    public int scorePerdidos() throws IOException {
+        var traitorList = rebeldeService.filtrarTraidores();
+        var recursosPerdidos = new Recursos();
+
+        int qtdeArma = 0;
+        int qtdeMunicao = 0;
+        int qtdeComida = 0;
+        int qtdeAgua = 0;
+
+        for (Rebel rebel : traitorList) {
+            qtdeAgua += rebel.getRecursos().getAgua();
+            qtdeArma += rebel.getRecursos().getArma();
+            qtdeComida += rebel.getRecursos().getComida();
+            qtdeMunicao += rebel.getRecursos().getMunicao();
+        }
+
+        recursosPerdidos.setArma(qtdeArma);
+        recursosPerdidos.setMunicao(qtdeMunicao);
+        recursosPerdidos.setAgua(qtdeAgua);
+        recursosPerdidos.setComida(qtdeComida);
+
+        return recursosPerdidos.getScore();
+    }
+
 }

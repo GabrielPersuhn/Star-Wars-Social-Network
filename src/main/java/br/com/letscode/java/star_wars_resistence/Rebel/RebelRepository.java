@@ -100,7 +100,7 @@ public class RebelRepository {
         for (Rebel rebeldeBuilder : listaRebeldes) {
             builder.append(format(rebeldeBuilder));
         }
-        write(builder.toString(), StandardOpenOption.CREATE);
+        write(builder.toString(), StandardOpenOption.TRUNCATE_EXISTING);
     }
 
 }

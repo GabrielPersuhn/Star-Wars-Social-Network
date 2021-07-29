@@ -4,6 +4,7 @@ import br.com.letscode.java.star_wars_resistence.Localizacao.Localizacao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
@@ -16,7 +17,14 @@ public class RebelRestController {
 
     private final RebelServices rebeldeService;
 
-    @GetMapping
+    @PostConstruct
+    @GetMapping("/rebelde/explicacaoAplicacao")
+    public String explicacao() {
+        return "Explicações da aplicação:\n" +
+                "";
+    }
+
+    @GetMapping("/rebelde/listarTodos")
     public List<Rebel> listarTodos() throws IOException {
         return rebeldeService.listAll();
     }

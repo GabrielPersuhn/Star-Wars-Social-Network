@@ -17,14 +17,15 @@ public class NegociacaoService {
 
     public String negociacaoDeItens(Negociacao negociacao) throws IOException {
 
+        List<Rebel> listAll = rebelRepository.listAll();
         Recursos itensDeTrocaRebeldeUm = negociacao.getFirstRecursos();
         Recursos itensDeTrocaRebeldeDois = negociacao.getSecondRecursos();
 
-        Optional<Rebel> rebeldeUm = rebelRepository.listAll().stream()
+        Optional<Rebel> rebeldeUm = listAll.stream()
                 .filter(r -> r.getId().equals(negociacao.getFirstId()))
                 .findFirst();
 
-        Optional<Rebel> rebeldeDois = rebelRepository.listAll().stream()
+        Optional<Rebel> rebeldeDois = listAll.stream()
                 .filter(r -> r.getId().equals(negociacao.getSecondId()))
                 .findFirst();
 
@@ -38,12 +39,7 @@ public class NegociacaoService {
                 throw new ScoresDiferemException();
             }
             transferenciaRecursos(rebeldeUm, itensDeTrocaRebeldeUm, rebeldeDois, itensDeTrocaRebeldeDois);
-
-            List<Rebel> itensTrocaUm = rebelRepository.listAll();
-            List<Rebel> itensTrocaDois = rebelRepository.listAll();
-
-            rebelRepository.reescreverArquivo(itensTrocaUm);
-            rebelRepository.reescreverArquivo(itensTrocaDois);
+            rebelRepository.reescreverArquivo(listAll);
 
             return "Negociação dos itens realizada com sucesso !";
         }

@@ -21,12 +21,7 @@ public class StarWarsResistenceApplication {
 
     //TODO relatórios
 
-    //TODO negociar itens e pontos dos itens (como atribuir)
-
-    //TODO interface ensinando a jogar
-
-    //inserir dois id's para negociar e informar o que eles irão negociar, se o valor for igual entre os dois, os itens serão
-    //adicionados de um rebelde para o outro
+    //TODO interface ensinando a j
 
 
     //FUNCIONANDO
@@ -34,5 +29,6 @@ public class StarWarsResistenceApplication {
     //POST REBELDE (INSERIR REBELDE)
     //PATCH REBELDE (ATUALIZAR LOCALIZAÇÃO)
     //POST REPORTE (REPORTAR REBELDE)
+    //POST NEGOCIACAO (NEGOCIAR COM OUTRO REBELDE)
 
 }
