@@ -22,7 +22,7 @@ public class RebelRestController {
     public String explicacao() {
         return "EXPLICAÇÕES DA APLICAÇÃO:\n\n\n" +
 
-                "Essa API REST foi desenvolvida para ajudar acompartilhar recursos entre a Resistência, " +
+                "Essa API REST foi desenvolvida para ajudar a compartilhar recursos entre a Resistência, " +
                 "pensando na negociação entre os Rebeldes\n\n" +
 
                 "Para adicionar um rebelde, acesse http://localhost:8080/rebelde e com um método Post, " +
