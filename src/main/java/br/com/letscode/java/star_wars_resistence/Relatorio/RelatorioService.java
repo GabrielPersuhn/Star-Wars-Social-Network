@@ -17,7 +17,7 @@ public class RelatorioService {
     public String getTraidores() throws IOException {
         var qtdeTraidores = rebeldeService.filtrarTraidores().size();
         long traidoresPercent = (qtdeTraidores* 100L)/(rebeldeService.listAll().size());
-        return String.format("Porcentagem de traidores: %.2f%%", traidoresPercent);
+        return "Porcentagem de traidores: " + traidoresPercent + "%";
     }
 
     public String getRebeldes() throws IOException {
@@ -47,10 +47,10 @@ public class RelatorioService {
         long mediaAgua = qtdeAgua / rebeldeService.listAll().size();
 
 
-        return String.format("Media de Arma: " + mediaArma +
-                "Media de Munição: " + mediaMunicao +
-                "Media de Comida: " + mediaComida +
-                "Media de Água: " + mediaAgua);
+        return String.format("Média de Arma: %.2d \n " +
+                "Media de Munição: %.2d \n" +
+                "Media de Comida: %.2d \n" +
+                "Media de Água: %.2d", mediaArma, mediaMunicao, mediaComida, mediaAgua);
     }
 
     public int scorePerdidos() throws IOException {

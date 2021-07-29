@@ -14,25 +14,25 @@ public class RelatorioRestController {
     private final RelatorioService relatorioService;
 
     @SneakyThrows
-    @GetMapping("/relatorio/traidores")
+    @GetMapping("/traidores")
     public String traidores() {
         return relatorioService.getTraidores();
     }
 
     @SneakyThrows
-    @GetMapping("/relatorio/rebeldes")
+    @GetMapping("/rebeldes")
     public String rebeldes() {
         return relatorioService.getRebeldes();
     }
 
     @SneakyThrows
-    @GetMapping("/relatorio/mediaRecursos")
+    @GetMapping("/mediaRecursos")
     public String mediaRecursos() {
         return relatorioService.mediaRecursos();
     }
 
     @SneakyThrows
-    @GetMapping("/relatorio/pontosPerdidos")
+    @GetMapping("/pontosPerdidos")
     public String pontosPerdidos() {
         return "O numero de pontos perdidos é: " + relatorioService.scorePerdidos();
     }
