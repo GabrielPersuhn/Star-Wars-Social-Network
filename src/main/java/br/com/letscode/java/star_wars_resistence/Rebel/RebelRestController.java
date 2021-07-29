@@ -59,7 +59,7 @@ public class RebelRestController {
                 ;
     }
 
-    @GetMapping("/rebelde/listarTodos")
+    @GetMapping("/listarTodos")
     public List<Rebel> listarTodos() throws IOException {
         return rebeldeService.listAll();
     }

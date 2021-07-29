@@ -53,7 +53,7 @@ public class RebelServices {
 
     public List<Rebel> filtrarTraidores() throws IOException {
         List<Rebel> listTraitor = listAll();
-        return listTraitor.stream().filter(t -> (t.getIsTraitorEnum().equals(IsTraitorEnum.REBEL))).collect(Collectors.toList());
+        return listTraitor.stream().filter(t -> (t.getIsTraitorEnum().equals(IsTraitorEnum.TRAITOR))).collect(Collectors.toList());
     }
 
 }

@@ -23,7 +23,7 @@ public class RelatorioService {
     public String getRebeldes() throws IOException {
         var qtdeRebelde = rebeldeService.filtrarRebeldes().size();
         long rebeldePercent = (qtdeRebelde* 100L)/(rebeldeService.listAll().size());
-        return String.format("Porcentagem de rebeldes: %.2f%%", rebeldePercent);
+        return "Porcentagem de rebeldes: " + rebeldePercent + "%" ;
     }
 
     public String mediaRecursos() throws IOException {
