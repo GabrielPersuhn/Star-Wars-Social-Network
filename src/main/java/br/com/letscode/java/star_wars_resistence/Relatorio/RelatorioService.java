@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
+
 @Service
 @RequiredArgsConstructor
 public class RelatorioService {
@@ -46,11 +47,10 @@ public class RelatorioService {
         long mediaComida = qtdeComida / rebeldeService.listAll().size();
         long mediaAgua = qtdeAgua / rebeldeService.listAll().size();
 
-
-        return String.format("Média de Arma: %.2d \n " +
-                "Media de Munição: %.2d \n" +
-                "Media de Comida: %.2d \n" +
-                "Media de Água: %.2d", mediaArma, mediaMunicao, mediaComida, mediaAgua);
+        return "Média de Arma: " + mediaArma +
+                "Média de Munição: " + mediaMunicao +
+                "Média de Comida: " + mediaComida +
+                "Média de Água: " + mediaAgua;
     }
 
     public int scorePerdidos() throws IOException {

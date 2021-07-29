@@ -20,21 +20,22 @@ public class RebelRestController {
     @PostConstruct
     @GetMapping("/explicacaoAplicacao")
     public String explicacao() {
+
         return "EXPLICAÇÕES DA APLICAÇÃO:\n\n\n" +
 
                 "Essa API REST foi desenvolvida para ajudar a compartilhar recursos entre a Resistência, " +
                 "pensando na negociação entre os Rebeldes\n\n" +
 
-                "Para adicionar um rebelde, acesse http://localhost:8080/rebelde e com um método Post, " +
+                "Para adicionar um rebelde, acesse localhost:8080/rebelde e com um método Post, " +
                 "insira as informações do novo integrante da resistência. :)\n" +
                 "Cada rebelde deve ter um nome, idade, gênero, localização (latitude, longitude e nome da base ao qual faz parte). " +
                 "além de seu inventário com os recursos em sua posse. \n\n" +
-                "Para visualizar todos os rebeldes, com seus respectivos atributos, acesse http://localhost:8080/rebelde/listarTodos\n" +
+                "Para visualizar todos os rebeldes, com seus respectivos atributos, acesse localhost:8080/rebelde/listarTodos\n" +
 
                 "Cada rebelde pode atualizar sua localização, para contatar a resistência caso precise de algo" +
-                "Para atualizá-la, acesse http://localhost:8080/rebelde/{id}/atualizaLocal e insira sua nova localização. \n\n" +
+                "Para atualizá-la, acesse localhost:8080/rebelde/{id}/atualizaLocal e insira sua nova localização. \n\n" +
 
-                " Para negociar recursos, vocês rebeldes devem acessar http://localhost:8080/negociacao/ e inserir os recursos que desejam trocar." +
+                "Para negociar recursos, vocês rebeldes devem acessar localhost:8080/negociacao/ e inserir os recursos que desejam trocar." +
                 "Vale lembrar que as trocas devem respeitar a pontuação de cada item, representada abaixo:\n" +
 
                 "1 Arma 4 pontos\n" +
@@ -46,16 +47,16 @@ public class RebelRestController {
                 "você pode reportar um rebelde, para ajudar a resistência a identificar os traidores." +
                 "Isso, é muito importante, porque caso um rebelde receba três reportes, " +
                 "automaticamente nós o consideramos como um traidor, e bloqueamos todas as suas funcionalidades." +
-                "Para reportar um rebelde, insira o respectivo id na requisição em http://localhost:8080/reportar \n\n  " +
+                "Para reportar um rebelde, insira o respectivo id na requisição em localhost:8080/reportar \n\n  " +
 
                 "Por fim, também é possível acessar 4 relatórios sobre a API. Eles são:\n" +
 
-                "-> Porcentagem de traidores. --- Acesse http://localhost:8080/relatorio/traidores/\n" +
-                "-> Porcentagem de rebeldes. --- Acesse http://localhost:8080/relatorio/rebeldes/\n" +
-                "-> Quantidade média de cada tipo de recurso por rebelde (Ex: 2 armas por rebelde). --- Acesse http://localhost:8080/relatorio/mediaRecursos/\n" +
-                "-> Pontos perdidos devido a traidores. --- Acesse http://localhost:8080/relatorio/pontosPerdidos/\n\n" +
+                "-> Porcentagem de traidores. --- Acesse localhost:8080/relatorio/traidores/\n" +
+                "-> Porcentagem de rebeldes. --- Acesse localhost:8080/relatorio/rebeldes/\n" +
+                "-> Quantidade média de cada tipo de recurso por rebelde. --- Acesse localhost:8080/relatorio/mediaRecursos/\n" +
+                "-> Pontos perdidos devido a traidores. --- Acesse localhost:8080/relatorio/pontosPerdidos/\n\n" +
 
-                "Aproveite a API e lembre-se de ajudar a Resistência nesta batalha. \n Que a força esteja com você !"
+                "Aproveite a API e lembre-se de ajudar a Resistência nesta batalha. \n\n QUE A FORÇA ESTEJA COM VOCÊ !"
                 ;
     }
 
