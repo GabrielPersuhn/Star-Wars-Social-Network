@@ -1,12 +1,12 @@
-package br.com.letscode.java.star_wars_resistence.relatorio;
+package br.com.letscode.java.star_wars_resistence.Relatorio;
 
+import br.com.letscode.java.star_wars_resistence.Inventario.Recursos;
 import br.com.letscode.java.star_wars_resistence.Rebel.Rebel;
 import br.com.letscode.java.star_wars_resistence.Rebel.RebelServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

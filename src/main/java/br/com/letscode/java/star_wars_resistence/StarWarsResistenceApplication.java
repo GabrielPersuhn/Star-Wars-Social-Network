@@ -15,8 +15,9 @@ public class StarWarsResistenceApplication {
     //TODO Transformar metodos para somente 1 parametro
     //TODO testes
     //TODO implementação de ID (verificar como a pessoa ira ver o ID e se é necessario)
-    //TODO catching
-    //TODO id ta aparecendo pra pessoa inserir um rebelde, e não deveria aparecer
+    //TODO catc
+    //TODO comentários explicando sobre a negociação no getMapping
+    //TODO comentarios sobe a aplicação em geral
 
     //TODO relatórios
 

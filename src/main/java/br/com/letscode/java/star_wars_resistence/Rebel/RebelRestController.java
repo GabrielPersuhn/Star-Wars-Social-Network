@@ -18,10 +18,8 @@ public class RebelRestController {
 
     @GetMapping
     public List<Rebel> listarTodos() throws IOException {
-        System.out.println("Explicações da aplicação"); //TODO comentarios sobe a aplicação em geral
         return rebeldeService.listAll();
     }
-
 
     @PostMapping
     public Rebel adicionarRebelde(@Valid @RequestBody Rebel rebelde) throws IOException {

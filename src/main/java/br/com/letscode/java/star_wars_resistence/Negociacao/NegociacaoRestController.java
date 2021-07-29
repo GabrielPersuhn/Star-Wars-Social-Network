@@ -16,8 +16,7 @@ public class NegociacaoRestController {
 
     @GetMapping()
     public String init() {
-        return "Explicação" ; // TODO comentários explicando sobre a negociação
-    }
+        return "Explicação" ; }
 
     @PostMapping()
     public String newNegociacao(@RequestBody Negociacao negociacao ) throws IOException {

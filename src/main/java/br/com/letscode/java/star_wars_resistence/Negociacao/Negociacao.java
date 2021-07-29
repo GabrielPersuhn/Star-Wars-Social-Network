@@ -21,26 +21,8 @@ public class Negociacao {
     @NotEmpty
     private Recursos secondRecursos;
 
-    @JsonIgnore
-    public int getScoreFirst() {
-        int agua = this.firstRecursos.getAgua();
-        int arma = this.firstRecursos.getArma();
-        int comida = this.firstRecursos.getComida();
-        int municao = this.firstRecursos.getMunicao();
-        return ((agua * 2) + (arma * 4) + (municao * 3) + comida);
-    }
-
-    @JsonIgnore
-    public int getScoreSecond() {
-        int agua = this.secondRecursos.getAgua();
-        int arma = this.secondRecursos.getArma();
-        int comida = this.secondRecursos.getComida();
-        int municao = this.secondRecursos.getMunicao();
-        return ((agua * 2) + (arma * 4) + (municao * 3) + comida);
-    }
-
     public boolean equalsScore(){
-        return Objects.equals(getScoreFirst(), getScoreSecond());
+        return Objects.equals(firstRecursos.getScore(), secondRecursos.getScore());
     }
 
 }
