@@ -35,15 +35,28 @@ public class NegociacaoService {
                 throw new NegociacaoComTraitorException();
             }
 
+            if(!rebeldeTemRecursos(rebeldeUm.get(), itensDeTrocaRebeldeUm) ||
+                    rebeldeTemRecursos(rebeldeDois.get(), itensDeTrocaRebeldeDois)){
+                throw new RebeldeSemRecursosException();
+            }
+
             if (!negociacao.equalsScore()) {
                 throw new ScoresDiferemException();
             }
+
             transferenciaRecursos(rebeldeUm, itensDeTrocaRebeldeUm, rebeldeDois, itensDeTrocaRebeldeDois);
             rebelRepository.reescreverArquivo(listAll);
 
             return "Negociação dos itens realizada com sucesso !";
         }
         throw new IdInexistenteException();
+    }
+
+    private boolean rebeldeTemRecursos(Rebel rebelde, Recursos recursos){
+        return rebelde.getRecursos().getComida() >= recursos.getComida() &&
+                rebelde.getRecursos().getMunicao() >= recursos.getMunicao() &&
+                rebelde.getRecursos().getAgua() >= recursos.getAgua() &&
+                rebelde.getRecursos().getArma() >= recursos.getArma();
     }
 
     private void transferenciaRecursos(Optional<Rebel> rebeldeUm, Recursos listaDoRebeldeUm, Optional<Rebel> rebeldeDois, Recursos listaDoRebeldeDois){
