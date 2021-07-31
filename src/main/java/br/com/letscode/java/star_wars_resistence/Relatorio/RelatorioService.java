@@ -47,9 +47,9 @@ public class RelatorioService {
         long mediaComida = qtdeComida / rebeldeService.listAll().size();
         long mediaAgua = qtdeAgua / rebeldeService.listAll().size();
 
-        return "Média de Arma: " + mediaArma +
-                "Média de Munição: " + mediaMunicao +
-                "Média de Comida: " + mediaComida +
+        return "Média de Arma: " + mediaArma + "\n" +
+                "Média de Munição: " + mediaMunicao + "\n" +
+                "Média de Comida: " + mediaComida + "\n" +
                 "Média de Água: " + mediaAgua;
     }
 

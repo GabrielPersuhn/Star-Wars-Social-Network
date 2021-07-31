@@ -39,7 +39,6 @@ public class NegociacaoService {
                     rebeldeTemRecursos(rebeldeDois.get(), itensDeTrocaRebeldeDois)){
                 throw new RebeldeSemRecursosException();
             }
-
             if (!negociacao.equalsScore()) {
                 throw new ScoresDiferemException();
             }

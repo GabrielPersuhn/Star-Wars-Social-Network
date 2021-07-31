@@ -10,9 +10,4 @@ public class StarWarsResistenceApplication {
         SpringApplication.run(StarWarsResistenceApplication.class, args);
     }
 
-
-    //TODO testes
-    //TODO implementação de ID (verificar como a pessoa ira ver o ID e se é necessario)
-    //TODO catc
-
 }

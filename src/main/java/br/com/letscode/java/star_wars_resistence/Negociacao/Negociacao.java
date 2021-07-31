@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import javax.annotation.PostConstruct;
 import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
